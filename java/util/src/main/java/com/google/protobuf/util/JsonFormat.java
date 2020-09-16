@@ -1818,13 +1818,11 @@ public class JsonFormat {
     }
 
     private boolean parseBool(JsonElement json) throws InvalidProtocolBufferException {
-      if (json.getAsString().equals("true")) {
-        return true;
+      try {
+        return Boolean.parseBoolean(json.getAsString());
+      } catch (Exception e) {
+        throw new InvalidProtocolBufferException("Invalid bool value: " + json);
       }
-      if (json.getAsString().equals("false")) {
-        return false;
-      }
-      throw new InvalidProtocolBufferException("Invalid bool value: " + json);
     }
 
     private static final double EPSILON = 1e-6;
