@@ -11,7 +11,7 @@ env:
 
 jobs:
   build_deploy:
-    runs-on: [self-hosted, master]
+    runs-on: [self-hosted]
 
     steps:
       - name: checkout repository
